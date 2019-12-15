@@ -13,7 +13,7 @@ consumer.subscriptions.create("RoomChannel", {
     var node = document.createElement("P"); 
 
     var textnode = document.createTextNode(data.content.message); 
-
+    node.id = data.content.id;
     node.appendChild(textnode); 
 
     document.getElementById("new_message").appendChild(node);

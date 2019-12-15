@@ -59,9 +59,12 @@ class ChatsController < ApplicationController
   # DELETE /chats/1.json
   def destroy
     @chat.destroy
+    ActionCable.server.broadcast 'remove_channel', content: @chat 
+
     respond_to do |format|
       format.html { redirect_to chats_url, notice: 'Chat was successfully destroyed.' }
       format.json { head :no_content }
+      format.js
     end
   end
 
